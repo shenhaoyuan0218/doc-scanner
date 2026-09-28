@@ -27,12 +27,12 @@ def sort_corner_points(points):
     corner_list = np.zeros((4,2), dtype="float32")
 
     sum_xy = points.sum(axis=1)
-    corner_list[0] = points[np.argmin(sum_xy)]  #左上
-    corner_list[2] = points[np.argmax(sum_xy)]  #右下
+    corner_list[0] = points[np.argmin(sum_xy)] 
+    corner_list[2] = points[np.argmax(sum_xy)]  
 
     diff_xy = np.diff(points, axis=1)
-    corner_list[1] = points[np.argmin(diff_xy)] #右上
-    corner_list[3] = points[np.argmax(diff_xy)] #左下
+    corner_list[1] = points[np.argmin(diff_xy)] 
+    corner_list[3] = points[np.argmax(diff_xy)] 
     return corner_list
 
 
@@ -64,7 +64,6 @@ def fix_perspective(original_img, four_points):
 
 
 def scan_paper(img_path, output_path):
-    """主扫描函数：读取图片，矫正，生成扫描件"""
     img = cv2.imread(img_path)
     scale_ratio = img.shape[0] / 500.0
     original_copy = img.copy()
